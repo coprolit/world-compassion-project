@@ -106,7 +106,6 @@ var app = {
         });
     },
     add_reminder_test: function () {
-        //navigator.notification.alert("add_reminder_test()");
 
         var now             = new Date().getTime(),
             _5_sec_from_now = new Date(now + 5*1000);
