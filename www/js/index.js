@@ -106,7 +106,7 @@ var app = {
         });
     },
     add_reminder_test: function () {
-        navigator.notification.alert("add_reminder_test()");
+        //navigator.notification.alert("add_reminder_test()");
 
         var now             = new Date().getTime(),
             _5_sec_from_now = new Date(now + 5*1000);
@@ -133,6 +133,12 @@ var app = {
                     }
                 });
             }
+        });
+    },
+
+    hasPermission: function() {
+        cordova.plugins.notification.local.hasPermission(function (granted) {
+            navigator.notification.alert("granted? " + (granted ? 'Yes' : 'No'));
         });
     }
 };
