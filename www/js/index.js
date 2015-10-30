@@ -114,7 +114,9 @@ var app = {
         cordova.plugins.notification.local.hasPermission(function(granted){
             if(granted == true) {
                 cordova.plugins.notification.local.schedule({
+                    id: 1,
                     text: "Delayed Notification",
+                    every: "minute",
                     at: _5_sec_from_now,
                     led: "FF0000",
                     sound: null
@@ -133,12 +135,6 @@ var app = {
                     }
                 });
             }
-        });
-    },
-
-    hasPermission: function() {
-        cordova.plugins.notification.local.hasPermission(function (granted) {
-            navigator.notification.alert("granted? " + (granted ? 'Yes' : 'No'));
         });
     }
 };
