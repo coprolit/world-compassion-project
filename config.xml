@@ -8,7 +8,7 @@
         PhoneGap Team
     </author>
     <content src="index.html" />
-    <preference name="phonegap-version" value="3.7.0"></preference>
+    <!--<preference name="phonegap-version" value="3.7.0"></preference>-->
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
@@ -42,6 +42,7 @@
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
+    <gap:plugin name="cordova-plugin-android-support-v4" source="npm" />
     <gap:plugin name="de.appplant.cordova.plugin.local-notification" version="0.8.1" />
     <icon src="icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
