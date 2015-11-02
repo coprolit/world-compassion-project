@@ -45,14 +45,14 @@ var app = {
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
-
+/*
         if(!localStorage.getItem("rp_data"))
         {
             var rp_data = {data: []};
             localStorage.setItem("rp_data", JSON.stringify(rp_data));
         }
         info = JSON.parse(localStorage.getItem("rp_data"));
-
+*/
         app.add_reminder_test();
 
         console.log('Received Event: ' + id);
@@ -66,11 +66,14 @@ var app = {
             at: schedule_time
         });
         var array = [id, title, message, schedule_time];
+        /*
         info.data[info.data.length] = array;
+
         localStorage.setItem("rp_data", JSON.stringify(info));
+         */
         navigator.notification.alert("Reminder added successfully")
     },
-
+/*
     add_reminder: function () {
         var date = document.getElementById("date").value;
         var time = document.getElementById("time").value;
@@ -105,6 +108,7 @@ var app = {
             }
         });
     },
+    */
     add_reminder_test: function () {
 
         var now             = new Date().getTime(),
