@@ -61,24 +61,21 @@ var app = {
     },
 
     reminderSelect: function () {
-        navigator.notification.alert('reminderSelect()');
         var today = new Date();
         var tomorrow = new Date();
         tomorrow.setDate(today.getDate()+1);
 
         var options = {
             date: tomorrow,
-            mode: 'time'
+            mode: 'date'
         };
 
         function onSuccess(date) {
             navigator.notification.alert('Selected date: ' + date);
-            //alert('Selected date: ' + date);
             app.reminderAdd(date);
         }
 
         function onError(error) { // Android only
-            //alert('Error: ' + error);
             navigator.notification.alert('Error: ' + error);
         }
 
@@ -146,6 +143,7 @@ var app = {
                     led: "FF0000",
                     sound: null
                 });
+                navigator.notification.alert('reminder scheduled for: ' + date);
             } else {
                 cordova.plugins.notification.local.registerPermission(function(granted) {
                     if(granted == true) {
