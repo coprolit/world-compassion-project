@@ -84,8 +84,7 @@ var app = {
                     text: "Time to meditate",
                     every: "day",
                     at: date,
-                    led: "FF0000",
-                    sound: null
+                    led: "FF0000"
                 });
                 navigator.notification.alert('Daily reminders begins at: ' + date);
             } else {
@@ -96,8 +95,7 @@ var app = {
                             text: "Time to meditate",
                             every: "day",
                             at: date,
-                            led: "FF0000",
-                            sound: null
+                            led: "FF0000"
                         });
                     } else {
                         navigator.notification.alert("Reminder cannot be added because app doesn't have permission");
@@ -108,8 +106,9 @@ var app = {
     },
 
     reminderCancel: function(){
-        cordova.plugins.notification.local.cancel(1, function () {
-            // Notification was cancelled
-        }, scope);
+        cordova.plugins.notification.local.cancelAll(function() {
+            // Notifications was cancelled
+            navigator.notification.alert('Daily reminders cancelled');
+        }, this);
     }
 };
