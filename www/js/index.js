@@ -61,6 +61,7 @@ var app = {
     },
 
     reminderSelect: function () {
+        navigator.notification.alert('reminderSelect()');
         var today = new Date();
         var tomorrow = new Date();
         tomorrow.setDate(today.getDate()+1);
@@ -71,12 +72,14 @@ var app = {
         };
 
         function onSuccess(date) {
-            alert('Selected date: ' + date);
+            navigator.notification.alert('Selected date: ' + date);
+            //alert('Selected date: ' + date);
             app.reminderAdd(date);
         }
 
         function onError(error) { // Android only
-            alert('Error: ' + error);
+            //alert('Error: ' + error);
+            navigator.notification.alert('Error: ' + error);
         }
 
         // let user select time:
