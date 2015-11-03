@@ -47,17 +47,8 @@ var app = {
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
-/*
-        if(!localStorage.getItem("rp_data"))
-        {
-            var rp_data = {data: []};
-            localStorage.setItem("rp_data", JSON.stringify(rp_data));
-        }
-        info = JSON.parse(localStorage.getItem("rp_data"));
-*/
-        //app.add_reminder_test();
 
-        console.log('Received Event: ' + id);
+        //console.log('Received Event: ' + id);
     },
 
     reminderSelect: function () {
@@ -78,54 +69,7 @@ var app = {
         // let user select time:
         datePicker.show(options, onSuccess, onError);
     },
-    /*
-    schedule: function (id, title, message, schedule_time) {
-        cordova.plugins.notification.local.schedule({
-            id: id,
-            title: title,
-            message: message,
-            at: schedule_time
-        });
-        var array = [id, title, message, schedule_time];
 
-        navigator.notification.alert("Reminder added successfully")
-    },
-
-    add_reminder: function () {
-        var date = document.getElementById("date").value;
-        var time = document.getElementById("time").value;
-        var title = document.getElementById("title").value;
-        var message = document.getElementById("message").value;
-        if(date == "" || time == "" || title == "" || message == "")
-        {
-            navigator.notification.alert("Please enter all details");
-            return;
-        }
-        var schedule_time = new Date((date + " " + time).replace(/-/g, "/")).getTime();
-        schedule_time = new Date(schedule_time);
-
-        var id = info.data.length;
-        cordova.plugins.notification.local.hasPermission(function(granted){
-            if(granted == true)
-            {
-                app.schedule(id, title, message, schedule_time);
-            }
-            else
-            {
-                cordova.plugins.notification.local.registerPermission(function(granted) {
-                    if(granted == true)
-                    {
-                        app.schedule(id, title, message, schedule_time);
-                    }
-                    else
-                    {
-                        navigator.notification.alert("Reminder cannot be added because app doesn't have permission");
-                    }
-                });
-            }
-        });
-    },
-    */
     reminderAdd: function (date) {
         var now = new Date();
         if(date < now){ // time selected is in the past
@@ -161,5 +105,11 @@ var app = {
                 });
             }
         });
+    },
+
+    reminderCancel: function(){
+        cordova.plugins.notification.local.cancel(1, function () {
+            // Notification was cancelled
+        }, scope);
     }
 };
