@@ -62,6 +62,7 @@ var app = {
 
     reminderSelect: function () {
         var options = {
+            date: new Date(),
             mode: 'time'
         };
 
@@ -76,7 +77,6 @@ var app = {
 
         // let user select time:
         datePicker.show(options, onSuccess, onError);
-
     },
     /*
     schedule: function (id, title, message, schedule_time) {
