@@ -16,6 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+"use strict";
+
 var info = null;
 
 var app = {
@@ -53,11 +55,35 @@ var app = {
         }
         info = JSON.parse(localStorage.getItem("rp_data"));
 */
-        app.add_reminder_test();
+        //app.add_reminder_test();
 
         console.log('Received Event: ' + id);
     },
 
+    reminderSelect: function () {
+        var today = new Date();
+        var tomorrow = new Date();
+        tomorrow.setDate(today.getDate()+1);
+
+        var options = {
+            date: tomorrow,
+            mode: 'time'
+        };
+
+        function onSuccess(date) {
+            alert('Selected date: ' + date);
+            app.reminderAdd(date);
+        }
+
+        function onError(error) { // Android only
+            alert('Error: ' + error);
+        }
+
+        // let user select time:
+        datePicker.show(options, onSuccess, onError);
+
+    },
+    /*
     schedule: function (id, title, message, schedule_time) {
         cordova.plugins.notification.local.schedule({
             id: id,
@@ -66,14 +92,10 @@ var app = {
             at: schedule_time
         });
         var array = [id, title, message, schedule_time];
-        /*
-        info.data[info.data.length] = array;
 
-        localStorage.setItem("rp_data", JSON.stringify(info));
-         */
         navigator.notification.alert("Reminder added successfully")
     },
-/*
+
     add_reminder: function () {
         var date = document.getElementById("date").value;
         var time = document.getElementById("time").value;
@@ -109,18 +131,15 @@ var app = {
         });
     },
     */
-    add_reminder_test: function () {
-
-        var now             = new Date().getTime(),
-            _5_sec_from_now = new Date(now + 5*1000);
+    reminderAdd: function (date) {
 
         cordova.plugins.notification.local.hasPermission(function(granted){
             if(granted == true) {
                 cordova.plugins.notification.local.schedule({
                     id: 1,
-                    text: "Delayed Notification",
-                    every: "minute",
-                    at: _5_sec_from_now,
+                    text: "Time to meditate",
+                    every: "day",
+                    at: date,
                     led: "FF0000",
                     sound: null
                 });
@@ -128,8 +147,10 @@ var app = {
                 cordova.plugins.notification.local.registerPermission(function(granted) {
                     if(granted == true) {
                         cordova.plugins.notification.local.schedule({
-                            text: "Delayed Notification",
-                            at: _5_sec_from_now,
+                            id: 1,
+                            text: "Time to meditate",
+                            every: "day",
+                            at: date,
                             led: "FF0000",
                             sound: null
                         });
