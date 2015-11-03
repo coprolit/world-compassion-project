@@ -61,17 +61,12 @@ var app = {
     },
 
     reminderSelect: function () {
-        var today = new Date();
-        var tomorrow = new Date();
-        tomorrow.setDate(today.getDate()+1);
-
         var options = {
-            date: tomorrow,
-            mode: 'date'
+            mode: 'time'
         };
 
         function onSuccess(date) {
-            navigator.notification.alert('Selected date: ' + date);
+            //navigator.notification.alert('Selected date: ' + date);
             app.reminderAdd(date);
         }
 
@@ -132,6 +127,11 @@ var app = {
     },
     */
     reminderAdd: function (date) {
+        var now = new Date();
+        if(date < now){ // time selected is in the past
+            // add a day:
+            date.setDate(date.getDate() + 1);
+        }
 
         cordova.plugins.notification.local.hasPermission(function(granted){
             if(granted == true) {
@@ -143,7 +143,7 @@ var app = {
                     led: "FF0000",
                     sound: null
                 });
-                navigator.notification.alert('reminder scheduled for: ' + date);
+                navigator.notification.alert('Daily reminders begins at: ' + date);
             } else {
                 cordova.plugins.notification.local.registerPermission(function(granted) {
                     if(granted == true) {
