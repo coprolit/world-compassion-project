@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.worldcompassionproject" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Hello World</name>
+    <name>World Compassion Project</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        World Compassion Project application - for a more compassionate world.
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="support@worldcompassionproject.com" href="http://www.worldcompassionproject.com/">
+        World Compassion Project Team
     </author>
     <content src="index.html" />
     <preference name="permissions" value="none" />

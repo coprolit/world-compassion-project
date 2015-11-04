@@ -83,8 +83,7 @@ var app = {
                     id: 1,
                     text: "Time to meditate",
                     every: "day",
-                    at: date,
-                    led: "FF0000"
+                    at: date
                 });
                 navigator.notification.alert('Daily reminders begins at: ' + date);
             } else {
@@ -94,8 +93,7 @@ var app = {
                             id: 1,
                             text: "Time to meditate",
                             every: "day",
-                            at: date,
-                            led: "FF0000"
+                            at: date
                         });
                     } else {
                         navigator.notification.alert("Reminder cannot be added because app doesn't have permission");
